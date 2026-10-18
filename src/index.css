@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; background: #000; color-scheme: dark; }
+  body { @apply bg-black font-sans text-zinc-200 antialiased; }
+  :focus-visible { @apply outline outline-2 outline-offset-2 outline-blue-400; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+}
