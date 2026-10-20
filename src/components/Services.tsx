@@ -1,15 +1,23 @@
 import { useI18n } from '../i18n';
 
+const ICONS = ['↗', '◫', '◷', '⌘'];
+
 export function Services() {
   const { t } = useI18n();
   return (
-    <section id="services" className="mx-auto max-w-6xl px-5 py-20">
-      <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">{t.services.title}</h2>
-      <div className="mt-10 grid gap-4 sm:grid-cols-2">
-        {t.services.items.map((s) => (
-          <article key={s.t} className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-transparent p-7 transition hover:border-blue-500/60">
-            <h3 className="text-lg font-semibold text-white">{s.t}</h3>
-            <p className="mt-2 leading-relaxed text-zinc-400">{s.d}</p>
+    <section id="services" className="section-shell services-section">
+      <div className="section-heading-row">
+        <div><div className="section-kicker"><span className="kicker-line" />{t.services.kicker}</div><h2 className="section-title">{t.services.title}</h2><p className="section-lead">{t.services.lead}</p></div>
+        <span className="section-index">01 / 05</span>
+      </div>
+      <div className="services-grid">
+        {t.services.items.map((service, i) => (
+          <article key={service.n} className={`service-card service-card-${i}`}>
+            <div className="flex items-start justify-between gap-4"><span className="service-icon" aria-hidden="true">{ICONS[i]}</span><span className="service-number">{service.n}</span></div>
+            <h3>{service.t}</h3>
+            <p>{service.d}</p>
+            <div className="service-tag-row"><span className="service-tag-dot" />{service.tag}</div>
+            <span className="service-card-glow" aria-hidden="true" />
           </article>
         ))}
       </div>
